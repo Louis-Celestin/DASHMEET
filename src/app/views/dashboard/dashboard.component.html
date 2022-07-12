@@ -1,0 +1,128 @@
+<app-widgets-dropdown></app-widgets-dropdown>
+<c-card class="mb-4">
+    <c-card-body>
+        <c-row>
+            <c-col sm="5">
+                <h4 class="card-title mb-0" id="traffic">
+                    Le Taux de Participation des Projets
+                </h4>
+                <div class="small text-medium-emphasis">Fevrier - Decembre 2022</div>
+            </c-col>
+            <c-col class="d-none d-md-block" sm="7">
+                <button cButton class="float-end" color="primary">
+          <svg cIcon name="cilCloudDownload"></svg>
+        </button>
+                <form [formGroup]="trafficRadioGroup">
+                    <c-button-group class="float-end me-3" role="group">
+                        <input class="btn-check" formControlName="trafficRadio" type="radio" value="Day" />
+                        <label (click)="setTrafficPeriod('Day')" cButton cFormCheckLabel color="secondary" variant="outline">Graphe en fonction du
+            </label>
+
+                        <input class="btn-check" formControlName="trafficRadio" type="radio" value="Month" />
+                        <label (click)="setTrafficPeriod('Month')" cButton cFormCheckLabel color="secondary" variant="outline">Mois</label
+            >
+
+            <!-- <input
+              class="btn-check"
+              formControlName="trafficRadio"
+              type="radio"
+              value="Year"
+            />
+            <label
+              (click)="setTrafficPeriod('Year')"
+              cButton
+              cFormCheckLabel
+              color="secondary"
+              variant="outline"
+              >Année</label
+            > -->
+          </c-button-group>
+        </form>
+      </c-col>
+    </c-row>
+    <c-chart
+      [data]="mainChart.data"
+      [height]="300"
+      [ngStyle]="{ 'marginTop.px': 40 }"
+      [options]="mainChart.options"
+      [type]="mainChart.type"
+    >
+      Main chart
+    </c-chart>
+  </c-card-body>
+  <c-card-footer>
+      <c-row class="text-center" [md]="5" [xs]="1">
+        <div *ngFor="let projet of projects">
+        <c-col class="mb-sm-2 mb-0">
+          <div class="text-medium-emphasis">{{projet.titre}}</div>
+          <strong>Collecte (40%)</strong>
+          <c-progress class="mt-2" thin>
+            <c-progress-bar color="secondary" value="40"></c-progress-bar>
+          </c-progress>
+        </c-col>
+        </div>
+      </c-row>
+  </c-card-footer>
+</c-card>
+<c-row>
+  <c-col xs="8" lg="6">
+    <c-card class="mb-4">
+      <c-card-header>
+        Taux des recueils de besoins des administrés</c-card-header
+      >
+      <c-card-body>
+        <c-chart type="doughnut" [data]="chartDoughnutData"></c-chart>
+      </c-card-body>
+    </c-card>
+  </c-col>
+  <c-col xs="8" lg="6">
+    <c-card class="mb-4">
+      <c-card-header>
+        Taux de demandes au nieau des services administratifs et de ma mobilité
+      </c-card-header>
+      <c-card-body>
+        <c-chart type="pie" [data]="chartPieData"></c-chart>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
+<c-row>
+  <c-col xs>
+    <c-card class="mb-4">
+      <c-card-header>Agents de la mairie</c-card-header>
+      <c-card-body>
+        <table
+          [hover]="true"
+          [responsive]="true"
+          [striped]="true"
+          align="middle"
+          cTable
+          class="mb-0 border"
+          datatable
+          [dtOptions]="dtOptions"
+        >
+          <thead cTableColor="light">
+            <tr>
+              <th><svg cIcon name="cilPeople"></svg> Utilisateur</th>
+              <th class="text-center">Telephone</th>
+              <th class="text-center">Email</th>
+              <th class="text-center">Demandes traités</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let list of AgentList">
+              <td>{{ list.name }} {{ list.prenom }}</td>
+              <td>{{ list.phone }}</td>
+              <td>{{ list.email }}</td>
+              <td style="text-align: center">
+                <c-badge color="warning" shape="rounded-pill">{{ 10 }}</c-badge>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
+<canvas id="myPieChart">
+</canvas>

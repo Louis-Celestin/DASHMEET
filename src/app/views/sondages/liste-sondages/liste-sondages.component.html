@@ -1,0 +1,40 @@
+<div class="card">
+    <div class="card-header text-white bg-info">LISTE DES SONDAGES</div>
+    <h1 class="card-title mt-4 ml-4" style="
+      text-align: center;
+      color: #3748e7;
+      font-weight: bold;
+      letter-spacing: 2px;
+      font-family: Roboto;
+    "></h1>
+    <div class="card-body">
+        <table datatable [dtOptions]="dtOptions" class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Description</th>
+                    <!-- <th scope="col">Auteur</th> -->
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let sondage of sondages">
+                    <th scope="row">{{ sondage.id }}</th>
+                    <td>{{ sondage.description }}</td>
+                    <!-- <td>{{ sondage.us }}</td> -->
+                    <td colspan="2" style="display: flex">
+                        &nbsp;
+                        <button class="btn btn-danger" (click)="deleteSondage(sondage.id)">
+              <i class="fa-solid fa-trash"></i></button
+            >&nbsp;
+            <button class="btn btn-warning">
+              <a routerLink="/sondages/detail-sondage/{{ sondage.id }}"
+                ><i class="fa-solid fa-eye"></i
+              ></a>
+            </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

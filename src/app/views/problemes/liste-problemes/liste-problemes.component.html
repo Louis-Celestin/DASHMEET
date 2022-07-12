@@ -1,0 +1,34 @@
+<div class="card">
+    <div class="card-header text-white bg-info">LISTE DES PROBLEMES SIGNALES</div>
+    <div class="card-body">
+        <table datatable [dtOptions]="dtOptions" class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Lieu</th>
+                    <th scope="col">Categorie</th>
+                    <th scope="col">Auteur</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let probleme of problemes">
+                    <th scope="row">{{ probleme.id }}</th>
+                    <td>{{ probleme.image }}</td>
+                    <td>{{ probleme.localisation }}</td>
+                    <td>{{ probleme.type_probleme.titre }}</td>
+                    <td>{{ probleme.user.name }}</td>
+                    <td colspan="3" style="display: flex">
+                        &nbsp;
+                        <button class="btn btn-warning">
+              <a routerLink="/problemes/detail-probleme/{{ probleme.id }}"
+                ><i class="fa-solid fa-eye"></i
+              ></a>
+            </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

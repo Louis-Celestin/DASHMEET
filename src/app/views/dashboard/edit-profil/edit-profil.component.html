@@ -1,0 +1,113 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
+
+<div class="container-xl px-4 mt-4">
+    <!-- Account page navigation-->
+    <nav class="nav nav-borders">
+        <a class="nav-link ms-0" routerLink="/dashboard/profile" target="__blank">Profile</a
+    >
+    <a class="nav-link active" (click)="updateProfile()" target="__blank"
+      >Modifier vos informations</a
+    >
+    <a class="nav-link" routerLink="/dashboard/change-password" target="__blank"
+      >Changer votre mot de passe</a
+    >
+  </nav>
+  <hr class="mt-0 mb-4" />
+
+  <div class="card">
+    <h3 class="card-header">Modifiez vos informations</h3>
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()">
+        <!-- Form Group (username)-->
+        <div class="mb-3">
+          <label class="small mb-1" for="inputUsername"
+            >Modifier votre nom</label
+          >
+          <input
+            class="form-control"
+            id="name"
+            [(ngModel)]="list.name"
+            name="name"
+          />
+        </div>
+        <!-- Form Row-->
+        <div class="row gx-3 mb-3">
+          <!-- Form Group (first name)-->
+          <div class="col-md-6">
+            <label class="small mb-1" for="inputFirstName">Prénom</label>
+            <input
+              class="form-control"
+              type="text"
+              id="prenom"
+              name="prenom"
+              [(ngModel)]="list.prenom"
+            />
+          </div>
+          <!-- Form Group (last name)-->
+          <div class="col-md-6">
+            <label class="small mb-1" for="inputLastName">Téléphone</label>
+            <input
+              class="form-control"
+              type="tel"
+              id="phone"
+              name="phone"
+              [(ngModel)]="list.phone"
+            />
+          </div>
+        </div>
+        <!-- Form Row        -->
+        <div class="row gx-3 mb-3">
+          <!-- Form Group (organization name)-->
+          <div class="col-md-6">
+            <label class="small mb-1">Lieu de naissance</label>
+            <input
+              class="form-control"
+              type="text"
+              id="lieu_naissance"
+              name="lieu_naissance"
+              [(ngModel)]="list.lieu_naissance"
+            />
+          </div>
+
+          <div class="col-md-6">
+            <label class="small mb-1">Date de naissance</label>
+            <input
+              class="form-control"
+              type="date"
+              id="date_naissance"
+              name="date_naissance"
+              [(ngModel)]="list.date_naissance"
+            />
+          </div>
+          <!-- Form Group (location)-->
+          <!-- <div class="col-md-6">
+            <label class="small mb-1">Commune</label>
+            <input
+              class="form-control"
+              type="text"
+              name="Idcommune"
+              [(ngModel)]="list.IdCommune"
+            />
+          </div> -->
+        </div>
+        <!-- Form Group (email address)-->
+
+        <!-- Form Row-->
+        <div class="mb-3">
+          <label class="small mb-1" for="inputUsername">Adresse e-mail</label>
+          <input
+            class="form-control"
+            type="email"
+            id="email"
+            name="email"
+            [(ngModel)]="list.email"
+          />
+        </div>
+        <!-- Save changes button-->
+        <button class="btn btn-primary" type="submit">
+          Enregistrer vos modifications
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

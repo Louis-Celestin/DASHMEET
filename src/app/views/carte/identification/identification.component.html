@@ -1,0 +1,160 @@
+<!-- <div id="carte-box"></div>
+<div id="carte"></div>
+
+<div class="wrapper">
+    <div class="box-inputs">
+        <div>
+            <div id="geocoder" #asGeoCoder class="geocoder">
+                <h1>Trop</h1>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="main">
+    <div class="grid-container">
+        <div class="grid-item">
+            <div class="card">
+                <div class="card-header text-center" style="font-size: 20px; letter-spacing: 2px; font-family: Roboto">
+                    Enregistrer les parkings
+                </div>
+                <div class="card-body justify-content-center">
+                    <form class="row g-3 needs-validation" (ngSubmit)="onSubmit()">
+                        <div class="col-md-6">
+                            <label for="validationCustom01" class="form-label">Proprietaire du parkings</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="validationCustom01"
+                name="nomProprietaire"
+                #nomProprietaire="ngModel"
+                [(ngModel)]="parking.nomProprietaire"
+                required
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label for="validationCustom01" class="form-label"
+                >Numéro de téléphone</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                id="validationCustom01"
+                name="numTel"
+                [(ngModel)]="parking.numTel"
+                #numTel="ngModel"
+                required
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="validationCustom01" class="form-label">
+                Le nom de l'entreprise</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="validationCustom01"
+                name="nomEntreprise"
+                [(ngModel)]="parking.nomEntreprise"
+                #nomEntreprise="ngModel"
+                required
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label for="validationCustom01" class="form-label"
+                >Description de l'activité</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="validationCustom01"
+                name="descripActivite"
+                [(ngModel)]="parking.descripActivite"
+                #descripActivite="ngModel"
+                required
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label for="validationCustom04" class="form-label"
+                >Selectionnez votre commune</label
+              >
+              <select
+                class="form-select"
+                id="validationCustom01"
+                name="IdCommune"
+                #IdCommune="ngModel"
+                [(ngModel)]="parking.IdCommune"
+                required
+              >
+                <option *ngFor="let commune of street" [ngValue]="commune.id">
+                  {{ commune.nom }}
+                </option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label for="validationCustom04" class="form-label"
+                >Selectionnez votre lieu de résidence</label
+              >
+              <select
+                class="form-select"
+                id="validationCustom01"
+                name="IdResidant"
+                #IdResidant="ngModel"
+                [(ngModel)]="parking.IdResidant"
+                required
+              >
+                <option *ngFor="let commune of street" [ngValue]="commune.id">
+                  {{ commune.nom }}
+                </option>
+              </select>
+            </div>
+
+            <div class="col-md-12">
+              <label for="validationCustom04" class="form-label"
+                >Selectionnez votre catégorie</label
+              >
+              <select
+                class="form-select"
+                id="validationCustom01"
+                name="IdResident"
+                #IdCategorie="ngModel"
+                [(ngModel)]="parking.IdCategorie"
+                required
+              >
+                <option
+                  *ngFor="let category of categorie"
+                  [ngValue]="category.id"
+                >
+                  {{ category.titre }}
+                </option>
+              </select>
+              <div class="invalid-feedback">Please select a valid state.</div>
+            </div>
+
+            <div class="col-12">
+              <button class="btn btn-primary" type="submit">Envoyer</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-item">
+      <div class="container p-5">
+        <div class="card">
+          <h3 class="card-title ml-2 text-center mt-2">Carte Communale</h3>
+          <div class="card-body">Longueur : {{ dataMap }}</div>
+          <div class="card-body"></div>
+          <div id="map" #asMap class="map-container">
+              <div class="marker"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

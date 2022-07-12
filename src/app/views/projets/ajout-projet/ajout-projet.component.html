@@ -1,0 +1,36 @@
+<!-- <c-alert (visibleChange)="onVisibleChange($event)" [visible]="visible" color="success" dismissible fade variant="solid">
+    <ng-template cTemplateId="alertButtonCloseTemplate">
+        <button (click)="visible = false" cButtonClose white></button>
+    </ng-template>
+    <h2>Enregistrement éffectué avec succès</h2>
+  {{ idee[0] }}
+</c-alert> -->
+
+<div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Projet</strong> enregistré avec succès! .
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<div class="card" style="margin-top: 20%; margin: 20%; width: 50%; height: 50%">
+    <h2 class="card-header">Ajouter un projet</h2>
+
+    <div class="card-body">
+        <form (ngSubmit)="onSubmit()" class="row g-3 needs-validation" novalidate>
+            <div class="col-md-12">
+                <label for="titre " class="form-label">Titre</label>
+                <input type="text" class="form-control" name="titre " id="titre " [(ngModel)]="projets.titre" required />
+            </div>
+
+            <div class="col-md-12">
+                <label for="description " class="form-label">Description</label>
+                <input type="text-area " class="form-control" name="description " id="description " [(ngModel)]="projets.description" required />
+            </div>
+
+            <div class="col-12">
+                <button class="btn btn-primary" (click)="onResetDismiss()" type="submit ">
+          Ajouter
+        </button>
+            </div>
+        </form>
+    </div>
+</div>

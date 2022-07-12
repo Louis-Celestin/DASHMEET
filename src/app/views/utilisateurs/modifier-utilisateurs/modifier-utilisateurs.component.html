@@ -1,0 +1,68 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
+<div *ngIf="alert" class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Modification</strong> effectué avec succès! .
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<div class="container-xl px-4 mt-4">
+    <div class="card">
+        <h3 class="card-header">Modifiez vos informations</h3>
+        <div class="card-body">
+            <form (ngSubmit)="onSubmit()">
+                <!-- Form Group (ngSubmit)=""onSubmit()(username)-->
+                <div class="mb-3">
+                    <label class="small mb-1" for="inputUsername">Modifier votre nom</label
+          >
+          <input
+            class="form-control"
+            type="text"
+            id="name"
+            [(ngModel)]="list.name"
+            name="name"
+          />
+        </div>
+        <!-- Form Row-->
+        <div class="row gx-3 mb-3">
+          <!-- Form Group (first name)-->
+          <div class="col-md-6">
+            <label class="small mb-1" for="inputFirstName">Prénom</label>
+                    <input class="form-control" type="text" id="prenom" name="prenom" [(ngModel)]="list.prenom" />
+                </div>
+
+                <!-- Form Group (last name)-->
+                <div class="col-md-6">
+                    <label class="small mb-1" for="inputLastName">Téléphone</label>
+                    <input class="form-control" type="tel" id="phone" name="phone" [(ngModel)]="list.phone" />
+                </div>
+        </div>
+        <!-- Form Row        -->
+        <div class="row gx-3 mb-3">
+            <!-- Form Group (organization name)-->
+            <div class="col-md-6">
+                <label class="small mb-1">Lieu de naissance</label>
+                <input class="form-control" type="text" id="lieu_naissance" name="lieu_naissance" [(ngModel)]="list.lieu_naissance" />
+            </div>
+
+            <div class="col-md-6">
+                <label class="small mb-1">Date de naissance</label>
+                <input class="form-control" type="date" id="date_naissance" name="date_naissance" [(ngModel)]="list.date_naissance" />
+            </div>
+            <!-- Form Group (location)-->
+            <!-- <div class="col-md-6">
+                <label class="small mb-1">Commune</label>
+                <input class="form-control" type="text" id="IdCommune" name="IdCommune" [(ngModel)]="list.IdCommune" />
+            </div> -->
+        </div>
+
+        <!-- Form Group (email address)-->
+        <div class="mb-3">
+            <label class="small mb-1" for="inputUsername">Adresse e-mail</label>
+            <input class="form-control" type="email" id="email" name="email" [(ngModel)]="list.email" />
+        </div>
+        <!-- Save changes button-->
+        <button class="btn btn-primary" type="submit">
+          Enregistrer vos modifications
+        </button>
+        </form>
+    </div>
+</div>
+</div>

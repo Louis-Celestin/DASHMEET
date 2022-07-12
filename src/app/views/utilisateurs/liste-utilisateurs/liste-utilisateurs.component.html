@@ -1,0 +1,69 @@
+<div *ngIf="alert" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong> Utilisateurs </strong> supprimé avec succès! .
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<div class="card" style="margin-top: 5%">
+    <h2 class="card-header">Liste des utilisateurs</h2>
+    <div class="card-body">
+        <table datatable [dtOptions]="dtOptions" class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Sexe</th>
+                    <th scope="col">Commune</th>
+                    <th scope="col">Membre</th>
+                    <th scope="col">Lieu de naissance</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let list of userList">
+                    <th scope="row">{{ list.id }}</th>
+                    <td>{{ list.name }}</td>
+                    <td>{{ list.prenom }}</td>
+                    <td>{{ list.email }}</td>
+                    <td>{{ list.phone }}</td>
+                    <td>{{ list.sexe }}</td>
+                    <td>
+                        {{ list.commune.nom }}
+                    </td>
+                    <td>{{ list.type_utilisateur.profil }}</td>
+                    <td>{{ list.lieu_naissance }}</td>
+                    <td colspan="3" style="display: flex">
+                        &nbsp;
+                        <button class="btn btn-danger" (click)="onResetDismiss()" (click)="deleteUser(list.id)">
+              <i class="fa-solid fa-trash"></i></button
+            >&nbsp;
+
+            <button
+              class="btn btn-info text-dark"
+              (click)="UpdateUser(list.id)"
+            >
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button> &nbsp;
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- <button class="btn btn-info text-dark">
+              <a routerLink="/utilisateurs/modifier-utilisateurs/{{ list.id }}"
+                ><i class="fa-solid fa-pen-to-square"></i
+              ></a></button
+            >&nbsp;
+
+             <span class="btn btn-warning text-dark">
+              <a href="#" (click)="modifUtilisateurs(list.id)"></a
+              ><i class="fa-solid fa-eye"></i
+            ></span>
+
+             <button class="btn btn-warning">
+              <i class="fa-solid fa-eye"></i>
+            </button -->

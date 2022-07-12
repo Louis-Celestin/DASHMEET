@@ -1,0 +1,155 @@
+<div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Enregistrement</strong> effectué avec succès! {{ agent.name }}.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<div class="card" style="margin-top: 5%">
+    <h2 class="card-header">Ajouter un utilisateur</h2>
+    <div class="card-body">
+        <form class="row g-3 needs-validation" (ngSubmit)="onSubmit()">
+            <div class="col-md-4">
+                <label for="validationCustom01" class="form-label">Nom</label>
+                <input type="text" class="form-control" id="validationCustom01" #name="ngModel" [(ngModel)]="agent.name" name="name" required />
+                <!-- <div class="valid-feedback">Looks good!</div> -->
+            </div>
+            <div class="col-md-4">
+                <label for="validationCustom02" class="form-label">Prénom</label>
+                <input type="text" class="form-control" id="validationCustom02" #prenom="ngModel" [(ngModel)]="agent.prenom" name="prenom" required />
+                <!-- <div class="valid-feedback">Looks good!</div> -->
+            </div>
+            <div class="col-md-4">
+                <label for="validationCustomUsername" class="form-label" data-error="Invalid email">E-mail</label
+        >
+        <div class="input-group has-validation">
+          <span class="input-group-text" id="inputGroupPrepend">@</span>
+          <input
+            type="email"
+            class="form-control"
+            id="validationCustomUsername"
+            aria-describedby="inputGroupPrepend"
+            name="email"
+            #email="ngModel"
+            [(ngModel)]="agent.email"
+            required
+          />
+          <!-- <div  [pattern]="emailPattern" class="invalid-feedback">Please choose a username.</div> -->
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label for="validationCustomUsername" class="form-label"
+          >Password</label
+        >
+        <div class="input-group has-validation">
+          <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
+          <input
+            type="password"
+            class="form-control"
+            id="validationCustomUsername"
+            aria-describedby="inputGroupPrepend"
+            name="password"
+            #password="ngModel"
+            [(ngModel)]="agent.password"
+            minlength="8"
+            required
+          />
+          <!-- <div class="invalid-feedback">Please choose a username.</div> -->
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label for="validationCustom03" class="form-label">Phone</label>
+                <input type="text" class="form-control" id="validationCustom03" [(ngModel)]="agent.phone" name="phone" #phone="ngModel" required />
+            </div>
+            <div class="col-md-4">
+                <label for="validationCustom04" class="form-label">Sexe</label>
+                <select class="form-select" id="validationCustom04" [(ngModel)]="agent.sexe" name="sexe" #sexe="ngModel" required>
+          <option selected disabled value="">Choisir</option>
+          <option value="F">F</option>
+          <option value="M">M</option>
+        </select>
+            </div>
+            <div class="col-md-6">
+                <label for="validationCustom05" class="form-label">Date naissance</label
+        >
+        <input
+          type="date"
+          [(ngModel)]="agent.date_naissance"
+          name="date_naissance"
+          class="form-control"
+          id="validationCustom05"
+        />
+      </div>
+
+      <div class="col-md-6">
+        <label for="validationCustom03" class="form-label"
+          >Lieu de naissance</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="validationCustom03"
+          [(ngModel)]="agent.lieu_naissance"
+          name="lieu_naissance"
+          required
+          value
+        />
+        <!-- <div class="invalid-feedback">Please provide a valid city.</div> -->
+      </div>
+
+      <!-- <div class="col-md-6">
+        <label
+          for="validationCustom04"
+          [(ngModel)]="agent.IdCommune"
+          #IdCommune="ngModel"
+          name="IdCommune"
+          class="form-label"
+          >Commune</label
+        >
+        <select
+          class="form-select"
+          id="validationCustom04"
+          [(ngModel)]="agent.IdCommune"
+          #IdCommune="ngModel"
+          name="IdCommune"
+          required
+        >
+          <option selected disabled value="">Choisir</option>
+           <option *ngFor="let commune of street" [value]="commune.id">
+            {{ commune.id }}
+          </option>
+
+          <option [value]="currentUser.data.Idcommune">
+            {{ currentUser.data.Commune }}
+          </option>
+        </select>
+      </div> -->
+
+      <div class="col-md-12">
+        <label for="validationCustom04" class="form-label"
+          >Type utilisateurs</label
+        >
+
+        <select
+          class="form-select"
+          id="validationCustom04"
+          [(ngModel)]="agent.IdTypeUtilisateur"
+          #IdTypeUtilisateur="ngModel"
+          name="IdTypeUtilisateur"
+          required
+        >
+          <option selected disabled value="">Choisir</option>
+          <option *ngFor="let users of userType" [value]="users.id">
+            <p *ngIf="users.profil != 'admin' && users.profil != 'membre'">
+              {{ users.profil }}
+            </p>
+          </option>
+        </select>
+        <div class="invalid-feedback">Please select a valid state.</div>
+      </div>
+      <div class="col-auto" style="padding-left: 2%">
+        <button class="btn btn-primary" type="submit">Enregistrer</button>
+      </div>
+    </form>
+  </div>
+</div>

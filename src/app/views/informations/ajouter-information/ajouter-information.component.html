@@ -1,0 +1,100 @@
+<div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Enregistrement</strong> effectué avec succès! .
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<div class="card" style="margin-top: 20%; margin: 20%; width: 50%; height: 50%">
+    <h2 class="card-header">Ajouter une information</h2>
+
+    <div class="card-body">
+        <form class="row g-3 needs-validation" (ngSubmit)="onSubmit()">
+            <div class="col-md-12">
+                <label for="titre" class="form-label">Titre</label>
+
+                <input type="text" class="form-control" name="titre" id="titre" [(ngModel)]="information.titre" required />
+                <!-- <div class="valid-feedback">Looks good!</div> -->
+            </div>
+
+            <div class="col-md-12">
+                <label for="description" class="form-label">Description</label>
+
+                <input type="text-area" class="form-control" name="description" id="description" [(ngModel)]="information.description" required />
+
+                <!-- <div class="invalid-feedback">Please provide a valid city.</div> -->
+            </div>
+
+            <div class="col-md-12">
+                <label>Type information</label>
+                <select class="form-select" name="IdTypeInformation" [(ngModel)]="information.IdTypeInformation">
+          <option selected disabled value>--Select--</option>
+          <option *ngFor="let type of infos" [ngValue]="type.id">
+            {{ type.titre }}
+          </option>
+        </select>
+            </div>
+
+            <!-- <div class="col-md-12">
+                <label for="image" class="form-label">Image</label>
+                <br />
+                <input type="file" id="img" name="images" accept="image/*" [(ngModel)]="information.images" />
+            </div> -->
+            <div class="custom-file col-md-12">
+                <label class="custom-file-label" for="validatedCustomFile">Choose file...</label
+        >
+        <input
+          type="file"
+          name="images"
+          accept="image/png, image/jpeg,.doc,.docx,"
+          [(ngModel)]="information.images"
+          class="custom-file-input"
+          id="validatedCustomFile"
+          required
+        />
+
+        <div class="invalid-feedback">Example invalid custom file feedback</div>
+      </div>
+      <div class="col-12">
+        <button
+          class="btn btn-primary"
+          (click)="onResetDismiss()"
+          type="submit"
+        >
+          Ajouter
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- type info -->
+
+<!-- <div class="col-md-12">
+                <div>
+                    <label>Commune</label>
+                <select class="form-select" name="Idcommune" [(ngModel)]="information.IdCommune">
+            <option selected disabled value>--Select--</option>
+            <option [ngValue]="currentUser.data.Idcommune">
+              {{ currentUser.data.Commune }}
+            </option> -->
+<!-- <option *ngFor="let quartier of commune" value="{{ quartier.id }}">
+              {{ quartier.nom }}
+            </option>{{ currentUser.data.Idcommune }} -->
+<!-- </select>
+            </div>
+
+            <div class="invalid-feedback">
+                Please provide a valid type information.
+            </div> -->
+            <!---</div> -->
+            <!-- <pre>
+
+  {{ currentUser | json }}
+</pre> -->
+
+            <!-- <div class="col-md-12"> -->
+            <!-- <input type="hidden" class="form-control" name="IdUser" [(ngModel)]="scope.IdUser" /> -->
+            <!-- <div class="valid-feedback">Looks good!</div> -->
+
+            <!-- {{ currentUser.data.id }} -->
+            <!-- <input hidden class="form-control" placeholder="IdUser" name="IdUser" [(ngModel)]="information.IdUser" value="{{ currentUser.data.id }}" ng-init="information.IdUser =currentUser.data.id" style="display: none" /> -->
+            <!-- </div> -->

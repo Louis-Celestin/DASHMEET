@@ -1,0 +1,115 @@
+<app-widgets-dropdown></app-widgets-dropdown>
+<c-card class="mb-4">
+    <c-card-body>
+        <c-row>
+            <c-col sm="5">
+                <h4 class="card-title mb-0" id="traffic">
+                    Le Taux de Participation des Projets
+                </h4>
+                <div class="small text-medium-emphasis">Fevrier - Decembre 2022</div>
+            </c-col>
+            <c-col class="d-none d-md-block" sm="7">
+                <button cButton class="float-end" color="primary">
+          <svg cIcon name="cilCloudDownload"></svg>
+        </button>
+                <form [formGroup]="trafficRadioGroup">
+                    <c-button-group class="float-end me-3" role="group">
+                        <input class="btn-check" formControlName="trafficRadio" type="radio" value="Day" />
+                        <label (click)="setTrafficPeriod('Day')" cButton cFormCheckLabel color="secondary" variant="outline">Graphe en fonction du
+            </label>
+
+                        <input class="btn-check" formControlName="trafficRadio" type="radio" value="Month" />
+                        <label (click)="setTrafficPeriod('Month')" cButton cFormCheckLabel color="secondary" variant="outline">Mois</label
+            >
+
+            <!-- <input
+              class="btn-check"
+              formControlName="trafficRadio"
+              type="radio"
+              value="Year"
+            />
+            <label
+              (click)="setTrafficPeriod('Year')"
+              cButton
+              cFormCheckLabel
+              color="secondary"
+              variant="outline"
+              >Année</label
+            > -->
+          </c-button-group>
+        </form>
+      </c-col>
+    </c-row>
+    <c-chart
+      [data]="mainChart.data"
+      [height]="300"
+      [ngStyle]="{ 'marginTop.px': 40 }"
+      [options]="mainChart.options"
+      [type]="mainChart.type"
+    >
+      Main chart
+    </c-chart>
+  </c-card-body>
+  <c-card-footer>
+    <c-row class="text-center" [md]="5" [xs]="1">
+      <c-col class="mb-sm-2 mb-0">
+        <div class="text-medium-emphasis">Construction de voirie</div>
+        <strong>Collecte (40%)</strong>
+        <c-progress class="mt-2" thin>
+          <c-progress-bar color="secondary" value="40"></c-progress-bar>
+        </c-progress>
+      </c-col>
+      <c-col class="mb-sm-2 mb-0">
+        <div class="text-medium-emphasis">Amenagement de l'espace vert</div>
+        <strong>Collecte (20%)</strong>
+        <c-progress class="mt-2" thin>
+          <c-progress-bar color="info" value="20"></c-progress-bar>
+        </c-progress>
+      </c-col>
+      <c-col class="mb-sm-2 mb-0">
+        <div class="text-medium-emphasis">Construction d'hopitaux</div>
+        <strong>Collecte (60%)</strong>
+        <c-progress class="mt-2" thin>
+          <c-progress-bar color="warning" value="60"></c-progress-bar>
+        </c-progress>
+      </c-col>
+      <c-col class="mb-sm-2 mb-0">
+        <div class="text-medium-emphasis">Construction de marché</div>
+        <strong>Collecte (80%)</strong>
+        <c-progress class="mt-2" thin>
+          <c-progress-bar color="danger" value="80"></c-progress-bar>
+        </c-progress>
+      </c-col>
+      <c-col class="mb-sm-2 mb-0">
+        <div class="text-medium-emphasis">Réhabilitation des écoles</div>
+        <strong>Collecte (40.15%)</strong>
+        <c-progress class="mt-2" thin>
+          <c-progress-bar color="success" value="40"></c-progress-bar>
+        </c-progress>
+      </c-col>
+    </c-row>
+  </c-card-footer>
+</c-card>
+
+<c-row>
+  <c-col xs="8" lg="6">
+    <c-card class="mb-4">
+      <c-card-header>
+        Taux des recueils de besoins des administrés</c-card-header
+      >
+      <c-card-body>
+        <c-chart type="doughnut" [data]="chartDoughnutData"></c-chart>
+      </c-card-body>
+    </c-card>
+  </c-col>
+  <c-col xs="8" lg="6">
+    <c-card class="mb-4">
+      <c-card-header>
+        Taux de demandes au nieau des services administratifs et de ma mobilité
+      </c-card-header>
+      <c-card-body>
+        <c-chart type="pie" [data]="chartPieData"></c-chart>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>

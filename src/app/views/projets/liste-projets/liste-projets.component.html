@@ -1,0 +1,41 @@
+<div *ngIf="alert" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Projet</strong> supprimé avec succès!
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<div class="card" style="margin-top: 20%">
+    <h2 class="card-header">Liste des utilisateurs</h2>
+    <div class="card-body">
+        <table datatable [dtOptions]="dtOptions" class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Titre</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let projet of projs">
+                    <th scope="row">{{ projet.id }}</th>
+                    <td>{{ projet.titre }}</td>
+                    <td>{{ projet.description }}</td>
+                    <td style="display: flex">
+                        &nbsp;
+                        <button class="btn btn-danger" (click)="onResetDismiss()" (click)="deleteProjet(projet.id)">
+              <!--on doit mettre un click -->
+              <i class="fa-solid fa-trash"></i></button
+            >&nbsp;
+
+            <!-- <button class="btn btn-info text-dark">
+              <a routerLink="/projets/modifier-projet/{{ projet.id }}"
+                ><i class="fa-solid fa-pen-to-square"></i
+              ></a></button
+            >&nbsp; -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

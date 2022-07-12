@@ -1,0 +1,35 @@
+<tr>
+    <th scope="row"></th>
+</tr>
+
+<div class="card text-center">
+    <div class="card-header" style="font-size: 18px; letter-spacing: 1px">
+        Liste des parkings
+    </div>
+    <div class="card-body">
+        <table class="table caption-top">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nom propriétaire</th>
+                    <th scope="col">Entreprise</th>
+                    <th scope="col">Categories</th>
+                    <th scope="col">Commune</th>
+                    <th scope="col" colspan="2">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let list of liste">
+                    <th scope="row">{{ list.id }}</th>
+                    <td>{{ list.nomProprietaire }}</td>
+                    <td>{{ list.nomEntreprise }}</td>
+                    <td>{{ list.IdCommune }}</td>
+                    <td>
+                        <button type="button" class="btn btn-danger mb-2">Danger</button
+            ><i class="fa-solid fa-trash-can"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,123 @@
+<div class="container">
+    <div class="row">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card p-3 mb-2 bg-primary text-white">
+                    <div class="card-header">test</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Special title treatment</h5>
+                        <p class="card-text">
+                            With supporting text below as a natural lead-in to additional content.
+                        </p>
+                        <a href="#" class="btn btn-secondary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card p-3 mb-2 bg-success text-white">
+                    <div class="card-header">test</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Special title treatment</h5>
+                        <p class="card-text">
+                            With supporting text below as a natural lead-in to additional content.
+                        </p>
+                        <a href="#" class="btn btn-secondary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card p-3 mb-2 bg-dark text-white">
+                    <div class="card-header">test</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Special title treatment</h5>
+                        <p class="card-text">
+                            With supporting text below as a natural lead-in to additional content.
+                        </p>
+                        <a href="#" class="btn btn-secondary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-lg-5">
+    <div class="content">
+        <div class="table-responsive">
+            <table class="table caption-top" class="table">
+                <caption>
+                    List of users
+                </caption>
+                <thead>
+                    <tr>
+                        <th scope="col" class="table-dark text-white">N°</th>
+                        <th scope="col" class="table-dark text-white">Nom et Prenom</th>
+                        <th scope="col" class="table-dark text-white">
+                            Date de La Demande
+                        </th>
+                        <th scope="col" class="table-dark text-white">N°Registre</th>
+                        <th scope="col" class="table-dark text-white">Copie Image</th>
+                        <th scope="col" class="table-dark text-white">Nom du Père</th>
+                        <th scope="col" class="table-dark text-white">Nom de la Mère</th>
+                        <th scope="col" class="table-dark text-white">Actions</th>
+                        <th scope="col" class="table-dark text-white">statut</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let affichage of affichageAll">
+                        <th class="table-dark text-white" scope="row">
+                            {{ affichage.id }}
+                        </th>
+                        <td class="table-secondary">
+                            {{ affichage.jsonDonnee.nom }}{{ affichage.jsonDonnee.prenom }}
+                        </td>
+                        <td class="table-secondary">{{ affichage.created_at }}</td>
+                        <td class="table-secondary">N°240 du 14/11/2008</td>
+                        <td class="table-secondary">{{ affichage.copieImage }}</td>
+                        <td class="table-secondary">{{ affichage.jsonDonnee.nomPere }}</td>
+                        <td class="table-secondary">{{ affichage.jsonDonnee.nomMere }}</td>
+                        <td class="table-secondary">
+                            <button (click)="getOneDetails(affichage.id)" class="btn btn-warning">
+                Editer
+              </button>
+                        </td>
+                        <td class="table-secondary">
+                            <!-- Example split danger button -->
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-info">Action</button>
+                                <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="##">En Cours</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="##">Terminé</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th scope="col" class="table-dark text-white">N°</th>
+                        <th scope="col" class="table-dark text-white">Nom et Prenom</th>
+                        <th scope="col" class="table-dark text-white">
+                            Date de La Demande
+                        </th>
+                        <th scope="col" class="table-dark text-white">N°Registre</th>
+                        <th scope="col" class="table-dark text-white">Copie Image</th>
+                        <th scope="col" class="table-dark text-white">Nom du Père</th>
+                        <th scope="col" class="table-dark text-white">Nom de la Mère</th>
+                        <th scope="col" class="table-dark text-white">Actions</th>
+                        <th scope="col" class="table-dark text-white">statut</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <!-- <pre>
+    <div class="container">
+      {{ affichageAll|json }}
+    </div>
+  </pre> -->
+</div>

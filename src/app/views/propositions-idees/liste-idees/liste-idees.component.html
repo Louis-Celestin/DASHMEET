@@ -1,0 +1,55 @@
+<!-- Alert -->
+<!-- <c-alert (visibleChange)="onVisibleChange($event)" [visible]="visible" color="success" dismissible fade variant="solid">
+    <ng-template cTemplateId="alertButtonCloseTemplate">
+        <button (click)="visible = false" cButtonClose white></button>
+    </ng-template>
+    <strong>Succès</strong>
+    <p>Thème est supprimé avec succès</p>
+</c-alert> -->
+<!--End Alert -->
+
+<!---alert-->
+
+<!-- <c-alert (visibleChange)="onVisibleChange($event)" [visible]="visible" color="danger" dismissible fade variant="solid">
+    <ng-template cTemplateId="alertButtonCloseTemplate">
+        <button (click)="visible = false" cButtonClose white></button>
+    </ng-template>
+    <h2>Vous avez supprimez le théme</h2>
+    {{ idee[0] }}
+</c-alert> -->
+
+<div *ngIf="alert" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Proposition d'idéee</strong> supprimé avec succès! .
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<div class="card" style="margin-top: 5%">
+    <h2 class="card-header">Liste des propositions d'idées</h2>
+    <div class="card-body">
+        <table datatable [dtOptions]="dtOptions" class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Emetteur</th>
+                    <th scope="col">Theme</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let list of idee">
+                    <th scope="row">{{ list.id }}</th>
+                    <td>{{ list.description }}</td>
+                    <td>{{ list.user.name }}</td>
+                    <td>{{ list.theme.titre }}</td>
+
+                    <td>
+                        <button class="btn btn-danger" (click)="onResetDismiss()" (click)="getIdeeDelete(list.id)">
+              <i class="fa-solid fa-trash"></i></button
+            >&nbsp;
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

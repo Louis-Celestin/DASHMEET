@@ -1,0 +1,44 @@
+<c-alert (visibleChange)="onVisibleChange($event)" [visible]="visible" color="danger" dismissible fade variant="solid">
+    <ng-template cTemplateId="alertButtonCloseTemplate">
+        <button (click)="visible = false" cButtonClose white></button>
+    </ng-template>
+    <h2>Information supprimé avec succès</h2>
+    <!-- {{ idee[0] }} -->
+</c-alert>
+
+<div class="card" style="margin-top: 5%">
+    <h2 class="card-header">Liste des informations</h2>
+
+    <div class="card-body">
+        <table datatable [dtOptions]="dtOptions" class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Titre</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let info of infos">
+                    <td>{{ info.id }}</td>
+                    <td>{{ info.titre }}</td>
+                    <td>{{ info.description }}</td>
+
+                    <td colspan="3" style="display: flex">
+                        &nbsp;
+
+                        <button (click)="onResetDismiss()" (click)="InfosDelete(info.id)" class="btn btn-danger">
+              <i class="fa-solid fa-trash"></i></button
+            >&nbsp;
+
+            <span class="btn btn-info text-dark"
+              ><i class="fa-solid fa-pen-to-square"></i></span
+            >&nbsp;
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
